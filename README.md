@@ -6,7 +6,7 @@ to install all packages needed
 
 #### use npm run start
 
-to start the server in port 544
+to start the server in port 8081
 
 #### use npm run build-prod
 
