@@ -8,7 +8,7 @@ function handleSubmit(event) {
     console.log("::: Form Submitted :::")
 
     if(url.isUri(formText)){
-        fetch('http://localhost:544/text/'+formText).then(response => response.json())
+        fetch('http://localhost:8081/text/'+formText).then(response => response.json())
         .then((response) => {
         // console.log(status)
         // console.log(body)
