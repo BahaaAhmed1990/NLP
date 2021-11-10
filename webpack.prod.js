@@ -29,7 +29,7 @@ module.exports = {
             template: "./src/client/views/index.html",
             filename: "./index.html",
         }),
-        new Workboxplugin.GenerateSW(),
+        new WorkboxPlugin.GenerateSW(),
         new MiniCssExtractPlugin({filename: '[name].css'})
     ]
 }
