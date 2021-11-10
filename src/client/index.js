@@ -9,7 +9,12 @@ import './styles/header.scss'
 
 // console.log(checkForName);
 
-alert("I EXIST")
+
+window.addEventListener('DOMContentLoaded', () => {
+    alert("I EXIST")
+    console.log('from window')
+    document.getElementById('submit-btn').addEventListener('click', handleSubmit);
+  })
 
 export {
    handleSubmit,

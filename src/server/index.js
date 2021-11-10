@@ -16,7 +16,7 @@ app.use(cors())
 // console.log(__dirname)
 
 app.get('/', function (req, res) {
-    res.sendFile('dist/index.html')
+    res.sendFile(path.resolve('dist/index.html'))
 })
 
 // designates what port the app will listen to for incoming requests
@@ -28,8 +28,13 @@ app.get('/test', function (req, res) {
     res.send(mockAPIResponse)
 })
 
-app.get('/text/*', (request,response) =>{
-    axios.get('https://api.meaningcloud.com/sentiment-2.1?key='+process.env.API_KEY+'&url='+request.params[0]+'&lang=en').then((res) => {response.send(res.data);})
+app.post('/text', (request,response) =>{
+    // console.log(request)
+    const { body: { url } } = request;
+    axios.post('https://api.meaningcloud.com/sentiment-2.1?key='+process.env.API_KEY+'&url='+url+'&lang=en').then((res) => {
+        console.log(res)
+        response.send(res.data);
+    })
     
 })
 

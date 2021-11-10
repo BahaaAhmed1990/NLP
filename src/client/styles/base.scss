@@ -2,6 +2,9 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    font-size: 24px;
+    font-family: sans-serif;
+    padding: 30px;
 }
 
 main {
@@ -11,4 +14,11 @@ main {
 section {
     max-width: 800px;
     margin: 50px auto;
+}
+#err-msg{
+    color: brown;
+    margin-bottom: 50px;
+    width: 90%;
+    margin: 0px auto;
+    padding: 10px;
 }

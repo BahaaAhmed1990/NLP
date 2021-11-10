@@ -1,23 +1,34 @@
 const url = require('valid-url');
 function handleSubmit(event) {
     event.preventDefault()
-
+    document.getElementById('err-msg').innerText = ''
     // check what text was put into the form field
-    let formText = document.getElementById('name').value
-    // checkForName(formText)
-    console.log("::: Form Submitted :::")
+    let inputUrl = document.getElementById('name').value
+    // checkForName(inputUrl)
+    console.log("::: Form Submitted :::",inputUrl)
 
-    if(url.isUri(formText)){
-        fetch('http://localhost:8081/text/'+formText).then(response => response.json())
+    if(url.isUri(inputUrl)){
+        fetch('http://localhost:8081/text',{
+            method:'POST',
+            mode:'cors',
+            credentials:'same-origin',
+            headers:{
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({url:inputUrl})
+        }).then(response => response.json())
         .then((response) => {
-        // console.log(status)
+        console.log(response)
         // console.log(body)
         if(response.status.msg === 'OK'){
-            document.getElementById('confidence').innerText = response.confidence
-            document.getElementById('subjectivity').innerText = response.subjectivity
+            document.getElementById('confidence').innerText = 'The confidence is :' + response.confidence
+            document.getElementById('subjectivity').innerText = 'The subjectivity is :' + response.subjectivity
         } else {
             document.getElementById('err-msg').innerText = 'Sorry,Error please try again'
         }
+    }).catch((err) =>{
+        console.log(err)
+        document.getElementById('err-msg').innerText = 'Sorry,Error please try again'
     })
     } else {
         document.getElementById('err-msg').innerText = 'Please, enter a valid url address'
