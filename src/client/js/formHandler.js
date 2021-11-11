@@ -1,4 +1,4 @@
-const url = require('valid-url');
+import { checkUrl } from './urlChecker'
 function handleSubmit(event) {
     event.preventDefault()
     document.getElementById('err-msg').innerText = ''
@@ -7,7 +7,7 @@ function handleSubmit(event) {
     // checkForName(inputUrl)
     console.log("::: Form Submitted :::",inputUrl)
 
-    if(url.isUri(inputUrl)){
+    if(checkUrl(inputUrl)){
         fetch('http://localhost:8081/text',{
             method:'POST',
             mode:'cors',

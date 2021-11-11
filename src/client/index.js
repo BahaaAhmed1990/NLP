@@ -1,5 +1,5 @@
 import { handleSubmit } from './js/formHandler'
-import { checkForName } from './js/nameChecker'
+// import { checkForName } from './js/nameChecker'
 
 import './styles/resets.scss'
 import './styles/base.scss'
@@ -11,12 +11,12 @@ import './styles/header.scss'
 
 
 window.addEventListener('DOMContentLoaded', () => {
-    alert("I EXIST")
+    // alert("I EXIST")
     console.log('from window')
     document.getElementById('submit-btn').addEventListener('click', handleSubmit);
   })
 
 export {
-   handleSubmit,
-   checkForName
+   handleSubmit
+  //  checkForName
 }
